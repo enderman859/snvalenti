@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import JSConfetti from 'js-confetti';
+
 function App() {
   const jsConfetti = new JSConfetti();
   const [agrandar, setAgrandar] = useState(45);
@@ -8,19 +9,23 @@ function App() {
   const [giftSize, setGiftSize] = useState(100);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [contador, setContador] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
   useEffect(() => {
     const interval = setInterval(() => {
       const fechaObjetivo = new Date("2025-02-15").getTime();
       const ahora = new Date().getTime();
       const diferencia = fechaObjetivo - ahora;
+
       const days = Math.floor(diferencia / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((diferencia % (1000 * 60)) / 1000);
+
       setContador({ days, hours, minutes, seconds });
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
   const handleGiftClick = () => {
     if (giftSize < 300) {
       setGiftSize(giftSize + 20);
@@ -32,68 +37,55 @@ function App() {
       });
     }
   };
+
   return (
-    
+    <main className="fondo w-screen h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center">
       {!valueSi ? (
-        
-
-
-          
-
-¿Quieres ser mi San Valentín?
-
-
-          
-          
-
-
-             setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
+        <div className="p-5">
+          <h1 className="text-white font-bold text-5xl text-center">¿Quieres ser mi San Valentín?</h1>
+          <img 
+            src="https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif" 
+            alt="Stitch" 
+            className="mx-auto" 
+            width={400} 
+            height={400} 
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-5 items-center">
+            <button onClick={() => setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
               Sí
-            
-            
+            </button>
+            <button className="bg-red-500 text-white font-bold p-2 rounded-md text-xl hidden">
               No
-            
-          
-
-
-        
-
-
+            </button>
+          </div>
+        </div>
       ) : !showFinalMessage ? (
-        
-
-
-          
-
-¡Aquí tienes un regalo! 🎁
-
-
-          
-        
-
-
+        <div className="flex flex-col items-center">
+          <h1 className="text-3xl text-white font-bold">¡Aquí tienes un regalo! 🎁</h1>
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/869/869674.png" 
+            alt="Regalo" 
+            className="cursor-pointer" 
+            width={giftSize} 
+            height={giftSize} 
+            onClick={handleGiftClick} 
+          />
+        </div>
       ) : (
-        
-
-
-          
-
-¡Sabía que dirías que sí! ❤️
-
-
-          
-        
-
-
+        <div className="flex justify-center items-center flex-col space-y-10">
+          <h1 className="text-4xl text-white font-bold">¡Sabía que dirías que sí! ❤️</h1>
+          <img 
+            src="https://i.pinimg.com/originals/9b/dc/c6/9bdcc6206c1d36a37149d31108c6bb41.gif" 
+            alt="Stitch feliz" 
+            className="mx-auto"
+          />
+        </div>
       )}
-      
-
-
+      <div className="absolute top-5 right-5 text-white text-2xl">
         {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
-      
-
-
-    
+      </div>
+    </main>
   );
 }
+
 export default App;

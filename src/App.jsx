@@ -8,6 +8,7 @@ function App() {
   const [giftSize, setGiftSize] = useState(100);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [contador, setContador] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [noSize, setNoSize] = useState(100);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,6 +38,12 @@ function App() {
     }
   };
 
+  const handleNoClick = () => {
+    if (noSize > 0) {
+      setNoSize(noSize - 20);
+    }
+  };
+
   return (
     <main className="fondo w-screen h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center">
       {!valueSi ? (
@@ -53,14 +60,26 @@ function App() {
             <button onClick={() => setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
               Sí
             </button>
-            <button className="bg-red-500 text-white font-bold p-2 rounded-md text-xl">
-              No
-            </button>
+            {noSize > 0 && (
+              <button 
+                onClick={handleNoClick} 
+                className="bg-red-500 text-white font-bold p-2 rounded-md text-xl" 
+                style={{ fontSize: `${noSize}%` }}
+              >
+                No
+              </button>
+            )}
           </div>
         </div>
       ) : !showFinalMessage ? (
         <div className="flex flex-col items-center">
-          <span className="text-6xl cursor-pointer" onClick={handleGiftClick}>🎁</span>
+          <span 
+            className="text-6xl cursor-pointer" 
+            style={{ fontSize: `${giftSize}px` }}
+            onClick={handleGiftClick}
+          >
+            🎁
+          </span>
         </div>
       ) : (
         <div className="flex justify-center items-center flex-col space-y-5">

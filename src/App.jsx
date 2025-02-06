@@ -3,7 +3,6 @@ import JSConfetti from 'js-confetti';
 
 function App() {
   const jsConfetti = new JSConfetti();
-  const [agrandar, setAgrandar] = useState(45);
   const [valueSi, setValueSi] = useState(false);
   const [showGift, setShowGift] = useState(false);
   const [giftSize, setGiftSize] = useState(100);
@@ -54,36 +53,28 @@ function App() {
             <button onClick={() => setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
               Sí
             </button>
-            <button className="bg-red-500 text-white font-bold p-2 rounded-md text-xl hidden">
+            <button className="bg-red-500 text-white font-bold p-2 rounded-md text-xl">
               No
             </button>
           </div>
         </div>
       ) : !showFinalMessage ? (
         <div className="flex flex-col items-center">
-          <h1 className="text-3xl text-white font-bold">¡Aquí tienes un regalo! 🎁</h1>
-          <img 
-            src="https://cdn-icons-png.flaticon.com/512/869/869674.png" 
-            alt="Regalo" 
-            className="cursor-pointer" 
-            width={giftSize} 
-            height={giftSize} 
-            onClick={handleGiftClick} 
-          />
+          <span className="text-6xl cursor-pointer" onClick={handleGiftClick}>🎁</span>
         </div>
       ) : (
-        <div className="flex justify-center items-center flex-col space-y-10">
+        <div className="flex justify-center items-center flex-col space-y-5">
           <h1 className="text-4xl text-white font-bold">¡Sabía que dirías que sí! ❤️</h1>
           <img 
             src="https://i.pinimg.com/originals/9b/dc/c6/9bdcc6206c1d36a37149d31108c6bb41.gif" 
             alt="Stitch feliz" 
             className="mx-auto"
           />
+          <div className="text-white text-2xl font-bold">
+            Tiempo restante: {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
+          </div>
         </div>
       )}
-      <div className="absolute top-5 right-5 text-white text-2xl">
-        {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
-      </div>
     </main>
   );
 }

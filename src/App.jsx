@@ -50,7 +50,7 @@ function App() {
         <div className="p-5">
           <h1 className="text-white font-bold text-5xl text-center">¿Quieres ser mi San Valentín?</h1>
           <img 
-            src="https://i.imgur.com/jRqClgm.gif" 
+            src="/public/stich1.gif" 
             alt="San Valentín" 
             className="mx-auto" 
             width={400} 
@@ -73,19 +73,20 @@ function App() {
         </div>
       ) : !showFinalMessage ? (
         <div className="flex flex-col items-center">
-          <span 
-            className="text-6xl cursor-pointer" 
-            style={{ fontSize: `${giftSize}px` }}
+          <img 
+            src="/public/regalo.jpg" 
+            alt="Regalo" 
+            className="cursor-pointer" 
+            width={giftSize} 
+            height={giftSize} 
             onClick={handleGiftClick}
-          >
-            🎁
-          </span>
+          />
         </div>
       ) : (
         <div className="flex justify-center items-center flex-col space-y-5">
           <h1 className="text-4xl text-white font-bold">¡Sabía que dirías que sí! ❤️</h1>
           <img 
-            src="https://i.imgur.com/O0RlDZe.gif" 
+            src="/public/stich2.gif" 
             alt="Sabía que dirías que sí" 
             className="mx-auto"
           />

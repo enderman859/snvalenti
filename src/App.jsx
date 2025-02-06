@@ -1,4 +1,4 @@
-import { useState } from "react"; 
+import { useState } from "react";
 import JSConfetti from 'js-confetti';
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
       {
         !valueSi ? (
           <div className="p-5">
-            <h1 className="text-white font-bold text-5xl text-center">¿Quieres ser mi san valentin?</h1>
+            <h1 className="text-white font-bold text-5xl text-center">¿Quieres ser mi amigo?</h1>
             <img src={Object.keys(randomValor).length === 0 ?
               "https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif" : randomValor.img} alt="Stitch" className="mx-auto" width={400} height={400} />
             <div className="grid grid-cols-1 md:grid-cols-2 mt-10 gap-5 items-center">
@@ -95,7 +95,7 @@ function App() {
                   emojiSize: 70,
                   confettiNumber: 80,
                 });
-              }} className={bg-green-500 text-white font-bold p-2 rounded-md text-xl} style={{ height: agrandar }}>
+              }} className={`bg-green-500 text-white font-bold p-2 rounded-md text-xl`} style={{ height: agrandar }}>
                 Si
               </button>
               <button
@@ -125,4 +125,3 @@ function App() {
 }
 
 export default App;
-

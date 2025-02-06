@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+ import { useState, useEffect } from "react";
 import JSConfetti from 'js-confetti';
-
 function App() {
   const jsConfetti = new JSConfetti();
   const [agrandar, setAgrandar] = useState(45);
@@ -9,7 +8,6 @@ function App() {
   const [giftSize, setGiftSize] = useState(100);
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [contador, setContador] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
   useEffect(() => {
     const interval = setInterval(() => {
       const fechaObjetivo = new Date("2025-02-15").getTime();
@@ -23,7 +21,6 @@ function App() {
     }, 1000);
     return () => clearInterval(interval);
   }, []);
-
   const handleGiftClick = () => {
     if (giftSize < 300) {
       setGiftSize(giftSize + 20);
@@ -35,34 +32,68 @@ function App() {
       });
     }
   };
-
   return (
-    <div>
+    
       {!valueSi ? (
-        <div>
-          <p>¿Quieres ser mi San Valentín?</p>
-          <button onClick={() => setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
-            Sí
-          </button>
-          <button onClick={() => setValueSi(false)} className="bg-red-500 text-white font-bold p-2 rounded-md text-xl">
-            No
-          </button>
-        </div>
+        
+
+
+          
+
+¿Quieres ser mi San Valentín?
+
+
+          
+          
+
+
+             setValueSi(true)} className="bg-green-500 text-white font-bold p-2 rounded-md text-xl">
+              Sí
+            
+            
+              No
+            
+          
+
+
+        
+
+
       ) : !showFinalMessage ? (
-        <div>
-          <p>¡Aquí tienes un regalo! 🎁</p>
-          <button onClick={handleGiftClick} className="bg-blue-500 text-white font-bold p-2 rounded-md text-xl">
-            Abrir regalo
-          </button>
-        </div>
+        
+
+
+          
+
+¡Aquí tienes un regalo! 🎁
+
+
+          
+        
+
+
       ) : (
-        <div>
-          <p>¡Sabía que dirías que sí! ❤️</p>
-        </div>
+        
+
+
+          
+
+¡Sabía que dirías que sí! ❤️
+
+
+          
+        
+
+
       )}
-      <p>{contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s</p>
-    </div>
+      
+
+
+        {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
+      
+
+
+    
   );
 }
-
 export default App;

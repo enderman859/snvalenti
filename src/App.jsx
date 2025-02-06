@@ -50,8 +50,8 @@ function App() {
         <div className="p-5">
           <h1 className="text-white font-bold text-5xl text-center">¿Quieres ser mi San Valentín?</h1>
           <img 
-            src="https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif" 
-            alt="Stitch" 
+            src="https://i.imgur.com/jRqClgm.gif" 
+            alt="San Valentín" 
             className="mx-auto" 
             width={400} 
             height={400} 
@@ -85,8 +85,8 @@ function App() {
         <div className="flex justify-center items-center flex-col space-y-5">
           <h1 className="text-4xl text-white font-bold">¡Sabía que dirías que sí! ❤️</h1>
           <img 
-            src="https://i.pinimg.com/originals/9b/dc/c6/9bdcc6206c1d36a37149d31108c6bb41.gif" 
-            alt="Stitch feliz" 
+            src="https://i.imgur.com/O0RlDZe.gif" 
+            alt="Sabía que dirías que sí" 
             className="mx-auto"
           />
           <div className="text-white text-2xl font-bold">

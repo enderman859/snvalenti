@@ -1,4 +1,4 @@
- import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import JSConfetti from 'js-confetti';
 function App() {
   const jsConfetti = new JSConfetti();

@@ -27,7 +27,7 @@ function App() {
   }, []);
 
   return (
-    <main className="w-screen h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center">
+    <main className="w-screen h-screen bg-[url('https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif')] bg-no-repeat bg-cover flex items-center justify-center bg-center">
       {!valueSi ? (
         <div className="p-5 text-center">
           <h1 className="text-white font-bold text-5xl">¿Quieres ser mi San Valentín?</h1>
@@ -62,3 +62,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import JSConfetti from 'js-confetti';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   const jsConfetti = new JSConfetti();
@@ -60,6 +63,16 @@ function App() {
     );
   };
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+  };
+
   return (
     <main className="fondo w-screen h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center">
       {!valueSi ? (
@@ -109,16 +122,19 @@ function App() {
           <div className="text-white text-2xl font-bold">
             Tiempo restante: {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
           </div>
-          {images.map((img) => (
-            <img
-              key={img.id}
-              src={img.src}
-              alt="Collage"
-              className="absolute cursor-move"
-              style={{ left: img.x, top: img.y, width: 100, height: 100, position: 'absolute' }}
-              onMouseMove={(event) => handleDrag(img.id, event)}
-            />
-          ))}
+          <div className="w-1/2">
+            <Slider {...settings}>
+              {images.map((img) => (
+                <div key={img.id}>
+                  <img
+                    src={img.src}
+                    alt="Collage"
+                    className="w-full h-64 object-cover"
+                  />
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
       )}
     </main>

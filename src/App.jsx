@@ -9,6 +9,12 @@ function App() {
   const [showFinalMessage, setShowFinalMessage] = useState(false);
   const [contador, setContador] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [noSize, setNoSize] = useState(100);
+  const [images, setImages] = useState([
+    { id: 1, src: "/foto1.jpeg", x: 50, y: 50 },
+    { id: 2, src: "/foto2.jpeg", x: 200, y: 100 },
+    { id: 3, src: "/foto3.jpeg", x: 100, y: 300 },
+    { id: 4, src: "/foto4.jpeg", x: 300, y: 200 },
+  ]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,6 +48,16 @@ function App() {
     if (noSize > 0) {
       setNoSize(noSize - 20);
     }
+  };
+
+  const handleDrag = (id, event) => {
+    const newX = event.clientX;
+    const newY = event.clientY;
+    setImages((prevImages) =>
+      prevImages.map((img) =>
+        img.id === id ? { ...img, x: newX, y: newY } : img
+      )
+    );
   };
 
   return (
@@ -83,7 +99,7 @@ function App() {
           />
         </div>
       ) : (
-        <div className="flex justify-center items-center flex-col space-y-5">
+        <div className="relative w-full h-full flex justify-center items-center flex-col space-y-5">
           <h1 className="text-4xl text-white font-bold">¡Sabía que dirías que sí! ❤️</h1>
           <img 
             src="/stich2.gif" 
@@ -93,6 +109,16 @@ function App() {
           <div className="text-white text-2xl font-bold">
             Tiempo restante: {contador.days}d {contador.hours}h {contador.minutes}m {contador.seconds}s
           </div>
+          {images.map((img) => (
+            <img
+              key={img.id}
+              src={img.src}
+              alt="Collage"
+              className="absolute cursor-move"
+              style={{ left: img.x, top: img.y, width: 100, height: 100, position: 'absolute' }}
+              onMouseMove={(event) => handleDrag(img.id, event)}
+            />
+          ))}
         </div>
       )}
     </main>
